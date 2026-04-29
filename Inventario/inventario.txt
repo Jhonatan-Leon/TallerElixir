@@ -1,0 +1,2 @@
+123456,hamburguesa,21000,4
+123654,salchicha con papa,90000,6
