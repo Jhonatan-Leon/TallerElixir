@@ -1,5 +1,4 @@
 defmodule Gimnasio.Services do
-  Code.require_file("socio.exs")
 
   def agregar_socio(socios, cedula, nombre, edad) do
   case Socio.nuevo(nombre, edad) do
@@ -27,9 +26,7 @@ defmodule Gimnasio.Services do
   def actualizar_socio(socios, cedula, nombre, edad) do
   case Map.get(socios, cedula) do
     nil ->
-      IO.puts("Entro por nil")
       {:error, :no_encontrado}
-
     socio ->
       actualizado = %{socio | nombre: nombre, edad: edad}
       valor  = Map.put(socios, cedula, actualizado)

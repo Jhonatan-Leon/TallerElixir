@@ -1,15 +1,9 @@
-Mix.install([
-  {:jason, "~> 1.4"}
-])
-
 defmodule Gimnasio.Persistencia do
-  Code.require_file("socio.exs")
-  @path_socios "../data/socio.json"
-
+  @path_socios "lib/data/socio.json"
   def cargar_todos_socios do
     case File.read(@path_socios) do
       {:ok, ""} ->
-        {}
+        %{}
       {:ok, content} ->
         {:ok, mapa} = Jason.decode(content)
         Map.new(mapa, fn m ->
@@ -35,8 +29,8 @@ defmodule Gimnasio.Persistencia do
     %Socio{
       cedula: mapa["cedula"],
       nombre: mapa["nombre"],
-      edad: mapa["Edad"],
-      clases: mapa["Clases"]
+      edad: mapa["edad"],
+      clases: mapa["clases"]
     }
   end
 
