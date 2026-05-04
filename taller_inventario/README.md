@@ -1,21 +1,20 @@
-# TallerInventario
+# 📦 Punto 2: Gestión de Inventario
 
-**TODO: Add description**
 
-## Installation
+## 🛠️ Aspectos Técnicos
+*   **Modelo de Datos:** Implementación de `Structs` con el protocolo `@derive [Jason.Encoder]` para serialización automática.
+*   **Persistencia:** Gestión de archivos en formato **JSON** mediante la librería `Jason`.
+*   **Eficiencia:** Uso de `Mapas` para garantizar búsquedas rápidas por código de producto.
+*   **Robustez:** Manejo de errores con bloques `case` para prevenir fallos en la lectura de archivos o decodificación de datos.
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `taller_inventario` to your list of dependencies in `mix.exs`:
+## 🚀 Funcionalidades
+*   Registro y validación de productos.
+*   Filtros dinámicos por vocales y coincidencia de caracteres.
+*   Reportes de precios y agrupación por rangos.
+*   Sincronización automática con `inventario.json`.
 
-```elixir
-def deps do
-  [
-    {:taller_inventario, "~> 0.1.0"}
-  ]
-end
-```
-
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at <https://hexdocs.pm/taller_inventario>.
-
+## 🖥️ Ejecución
+Para iniciar este módulo, sitúate en esta carpeta y ejecuta:
+terminal ->
+mix deps.get
+mix run
