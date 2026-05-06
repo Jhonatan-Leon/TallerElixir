@@ -15,6 +15,7 @@ defmodule Gimnasio.Interfaz do
     5. Buscar a un socio
     6. Listar socios de una clase en específico
     7. Listar todas las clases de un socio
+    8. Desincribir de una clase
     Seleccione la opción: ") |> String.trim() |>String.to_integer()
 
     case opcion do
@@ -77,12 +78,11 @@ defmodule Gimnasio.Interfaz do
         IO.puts("Listar a socios de una clase en especifico ")
         clase = IO.gets("ingrese una clase: ") |> String.trim()
         case Gimnasio.Services.socios_en_clase(socios, clase) do
-          {:ok, socio} ->
-            Enum.each(socio, fn s -> IO.puts(s.nombre) end)
-            main(socios)
-          {:error, razon} ->
-            IO.inspect("Se encontro un error al cargar los socios: #{razon}")
-            main(socios)
+          socio ->
+            IO.puts("--------Socios ------------")
+              Enum.each(socio, fn s -> IO.puts(s.nombre) end)
+              IO.puts("---------------------------")
+              main(socios)
         end
 
       7 ->

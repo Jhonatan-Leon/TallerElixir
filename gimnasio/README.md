@@ -1,21 +1,7 @@
-# Gimnasio
+# Ejercicio de sistema de Gimnasio
 
-**TODO: Add description**
-
-## Installation
-
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `gimnasio` to your list of dependencies in `mix.exs`:
-
-```elixir
-def deps do
-  [
-    {:gimnasio, "~> 0.1.0"}
-  ]
-end
-```
-
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at <https://hexdocs.pm/gimnasio>.
+## ¿Qué realiza el sistema?
+- Es un sistema que gestionara a los socios y las clases a los que estos esten inscritos
+## Aspectos técnicos
+* **Persistencia** archivo que nos servira para la carga de datos [CSV"] y con ayuda de la libreria ["csv]
 
