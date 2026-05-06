@@ -40,5 +40,6 @@ Para la realización de este taller se utilizó **Gemini** como asistente de des
 *   Optimización de la recursividad en los menús de consola.
 
 ---
+# Desarrolladores
 
 * Jhonatan Cardona León - Ruben Steven Sanchez
