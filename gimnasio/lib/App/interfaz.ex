@@ -16,6 +16,7 @@ defmodule Gimnasio.Interfaz do
     6. Listar socios de una clase en específico
     7. Listar todas las clases de un socio
     8. Desincribir de una clase
+    9: Inscribir a un socio a una clase
     Seleccione la opción: ") |> String.trim() |>String.to_integer()
 
     case opcion do
@@ -99,19 +100,24 @@ defmodule Gimnasio.Interfaz do
             main(socios)
         end
       8->
-        IO.puts("Desinscribir deu na clase: ")
+        IO.puts("Desinscribir de una clase: ")
         cedula = IO.gets("Ingrese la cedula del socio: ") |> String.trim()
         clase = IO.gets("Ingrese el nombre de la clase: ") |> String.trim()
-        case Gimnasio.Services.obtener_socio(socios, cedula) do
-          {:ok, socio} ->
-            case Socio.desinscribir_clase(socio, clase) do
-              {:ok, socios} ->
-                IO.puts("---- Socio desinscrito de la clase ---------")
-                main(socios)
-            end
-          {:error, razon} ->
-            IO.puts("Error al desinscribir un socio #{razon}")
+        case Gimnasio.Services.desinscribir_clase(socios, cedula, clase) do
+          {:ok, socios} ->
+            IO.puts("-- Proceso terminado ------ ")
             main(socios)
+          {:error, razon} ->
+            IO.puts("Error al desincribir socio: #{razon}")
+        end
+      9 ->
+        IO.puts("Inscribir a una clase ")
+        case inscribir_clase?(socios) do
+          {:ok, socios} ->
+            IO.puts("Proceso Finalizado")
+            main(socios)
+          {:error, razon} ->
+            IO.puts("Error al inscribir socio: #{razon}")
         end
 
       _ ->

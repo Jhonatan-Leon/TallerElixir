@@ -41,23 +41,29 @@ defmodule Gimnasio.Persistencia do
   # end
 
   def guardar_socios(socios) do
-    data = Map.values(socios)
-    # Convierte un struct a mapa y el formato de clases a string
-    data_map = Enum.map(data, fn d ->
-      d_map = Map.from_struct(d)
-      Map.update(d_map, :clases, "", fn clases ->
-        Enum.join(clases, ";")
-      end)
-    end)
-    # Encode a CSV y escribir en el archivo
-    csv_content = CSV.encode(data_map) |> Enum.join("\n")
-    File.write(@path_socios, csv_content)
+  rows =
     socios
-  rescue
-    e ->
-      IO.puts("Error al guardar socios, razón: #{inspect(e)}")
-      socios
-  end
+    |> Map.values()
+    |> Enum.map(fn socio ->
+      [
+        socio.cedula,
+        socio.nombre,
+        socio.edad,
+        Enum.join(socio.clases || [], ";")
+      ]
+    end)
+
+  csv_content = [["cedula", "nombre", "edad", "clases"] | rows]
+    |> CSV.encode()
+    |> Enum.join()
+
+  File.write!(@path_socios, csv_content)
+  socios
+rescue
+  e ->
+    IO.puts("Error al guardar socios, razón: #{inspect(e)}")
+    socios
+end
 
   def map_a_socio(mapa) do
     clases = mapa["clases"]
